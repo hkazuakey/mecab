@@ -7,12 +7,16 @@ def cmd1(str):
 	rline = os.popen(str).readlines() 
 	retval = rline[0][:-1]
 	return retval
-    # return os.popen(str).readlines()[0][:-1]
 
 def cmd2(str):
-    cstr = cmd1(str)
+    cstr = cmd1(str) + " /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"
     return cstr.split ()
 
+def cmd3(str):
+	cstr = cmd1(str) + " /usr/lib"
+	return cstr.split()
+	
+	
 setup(name = "mecab-python",
 	version = cmd1("mecab-config --version"),
 	py_modules=["MeCab"],
@@ -20,6 +24,6 @@ setup(name = "mecab-python",
 		Extension("_MeCab",
 			["MeCab_wrap.cxx",],
 			include_dirs=cmd2("mecab-config --inc-dir"),
-			library_dirs=cmd2("mecab-config --libs-only-L"),
+			library_dirs=cmd3("mecab-config --libs-only-L"),
 			libraries=cmd2("mecab-config --libs-only-l"))
 			])

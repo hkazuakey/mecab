@@ -4,13 +4,18 @@ $Id: README,v 1.1.1.1 2005/12/03 14:18:50 taku-ku Exp $;
 
 1. Installation
 
-  % python setup.py build
-  % su
-  # python setup.py install
+	% python setup.py build
+	% su
+	# python setup.py install
+
+  On macOS, we should install gcc 4.9 to build this package.
+	$ brew install gcc@4.9
+	$ CC=gcc-4.9 CXX=g++-4.9 python setup.py build
+	$ CC=gcc-4.9 CXX=g++-4.9 python setup.py install
   
   You can change the install directory with the --prefix option. For example:
 
-  % python setup.py install --prefix=/tmp/pybuild/foobar
+	% python setup.py install --prefix=/tmp/pybuild/foobar
   
 2. How to use?
 
